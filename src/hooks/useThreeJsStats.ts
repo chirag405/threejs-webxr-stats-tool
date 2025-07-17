@@ -1,8 +1,8 @@
 import { useEffect, useRef, useCallback } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Object3D, WebGLRenderer } from 'three'
-import { usePerformanceStore } from '@/store/performance'
-import { PerformanceMonitor, ComponentMetrics } from '@/utils/performance'
+import { usePerformanceStore } from '../store/performance'
+import { PerformanceMonitor, ComponentMetrics } from '../utils/performance'
 
 interface UseThreeJsStatsOptions {
   enabled?: boolean
@@ -276,4 +276,4 @@ export const usePerformanceWarnings = (thresholds = {
 }
 
 // Export ComponentStatsCard for convenience
-export { default as ComponentStatsCard } from '@/components/stats/ComponentStatsCard' 
+export { default as ComponentStatsCard } from '../components/stats/ComponentStatsCard'

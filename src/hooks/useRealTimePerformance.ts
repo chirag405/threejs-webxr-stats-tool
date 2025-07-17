@@ -1,7 +1,7 @@
 import { useEffect, useRef, useCallback } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { usePerformanceStore } from '@/store/performance'
-import { PerformanceMonitor } from '@/utils/performance'
+import { usePerformanceStore } from '../store/performance'
+import { PerformanceMonitor } from '../utils/performance'
 
 /**
  * Real-time performance monitoring hook that updates at 60fps

@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { PerformanceMonitor, PerformanceMetrics, ComponentMetrics, PerformanceChange } from '@/utils/performance'
+import { PerformanceMonitor, PerformanceMetrics, ComponentMetrics, PerformanceChange } from '../utils/performance'
 
 interface SpatialScreen {
   id: string

@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Activity, Cpu, HardDrive, Zap, AlertTriangle, CheckCircle, XCircle } from 'lucide-react'
-import { useGlobalMetrics, useMonitoringSettings, usePerformanceStore } from '@/store/performance'
+import { useGlobalMetrics, useMonitoringSettings, usePerformanceStore } from '../../store/performance'
 
 interface MetricCardProps {
   title: string

@@ -2,8 +2,8 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import { Eye, EyeOff, Triangle, Cpu, HardDrive, Move, Scale, RotateCcw } from 'lucide-react'
-import { useComponentMetrics } from '@/store/performance'
-import { ComponentMetrics } from '@/utils/performance'
+import { useComponentMetrics } from '../../store/performance'
+import { ComponentMetrics } from '../../utils/performance'
 
 
 interface ComponentStatsCardProps {

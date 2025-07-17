@@ -1,0 +1,91 @@
+{
+  "name": "@your-org/threejs-webxr-stats",
+  "version": "1.0.0",
+  "description": "A comprehensive, modular performance monitoring library for Three.js and React Three Fiber applications, with special support for WebXR environments.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc && rollup -c",
+    "dev": "rollup -c -w",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "three.js",
+    "webxr",
+    "performance",
+    "monitoring",
+    "react-three-fiber",
+    "stats",
+    "fps",
+    "memory",
+    "gpu",
+    "vr",
+    "ar"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/threejs-webxr-stats.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/threejs-webxr-stats/issues"
+  },
+  "homepage": "https://github.com/your-org/threejs-webxr-stats#readme",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
+    "three": ">=0.140.0",
+    "@react-three/fiber": ">=8.0.0"
+  },
+  "dependencies": {
+    "zustand": "^4.4.0",
+    "stats.js": "^0.17.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/three": "^0.150.0",
+    "@types/stats.js": "^0.17.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "eslint": "^8.40.0",
+    "eslint-plugin-react": "^7.32.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^29.5.0",
+    "rollup": "^3.21.0",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./hooks": {
+      "import": "./dist/hooks/index.esm.js",
+      "require": "./dist/hooks/index.cjs.js",
+      "types": "./dist/hooks/index.d.ts"
+    },
+    "./components": {
+      "import": "./dist/components/index.esm.js",
+      "require": "./dist/components/index.cjs.js",
+      "types": "./dist/components/index.d.ts"
+    },
+    "./utils": {
+      "import": "./dist/utils/index.esm.js",
+      "require": "./dist/utils/index.cjs.js",
+      "types": "./dist/utils/index.d.ts"
+    }
+  }
+}
