@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+canvas {
+  touch-action: none;
+}
+
+/* WebXR specific styles */
+@layer components {
+  .stats-panel {
+    @apply bg-black/80 backdrop-blur-sm border border-white/20 rounded-lg p-4 text-white;
+  }
+  
+  .metric-excellent {
+    @apply text-stats-excellent border-stats-excellent/30 bg-stats-excellent/10;
+  }
+  
+  .metric-good {
+    @apply text-stats-good border-stats-good/30 bg-stats-good/10;
+  }
+  
+  .metric-warning {
+    @apply text-stats-warning border-stats-warning/30 bg-stats-warning/10;
+  }
+  
+  .metric-critical {
+    @apply text-stats-critical border-stats-critical/30 bg-stats-critical/10;
+  }
+  
+  .metric-danger {
+    @apply text-stats-danger border-stats-danger/30 bg-stats-danger/10;
+  }
+  
+  .spatial-screen {
+    @apply bg-black/90 backdrop-blur-md border border-ui-primary/30 rounded-xl overflow-hidden;
+    @apply shadow-2xl shadow-ui-primary/20;
+  }
+  
+  .control-button {
+    @apply bg-ui-primary/20 hover:bg-ui-primary/40 border border-ui-primary/50 rounded-lg;
+    @apply transition-all duration-200 backdrop-blur-sm;
+  }
+} 
