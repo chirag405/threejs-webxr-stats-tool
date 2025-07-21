@@ -24,6 +24,18 @@ const nextConfig = {
             key: 'Cross-Origin-Opener-Policy',
             value: 'same-origin',
           },
+          {
+            key: 'Permissions-Policy',
+            value: 'xr-spatial-tracking=(self), accelerometer=(self), gyroscope=(self), magnetometer=(self)',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
         ],
       },
     ]

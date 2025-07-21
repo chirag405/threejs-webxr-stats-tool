@@ -1,0 +1,20 @@
+[33mcommit aea5e1ea84050d619c5cb3c8a44601896440c6f0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/modularize-stats-library[m[33m, [m[1;31morigin/feature/modularize-stats-library[m[33m)[m
+Author: chirag405 <chiragdhouni20@gmail.com>
+Date:   Thu Jul 17 13:06:57 2025 +0530
+
+    Modularize stats library for reusability
+    
+    - Updated imports to use relative paths instead of absolute paths
+    - Created comprehensive README for the stats library
+    - Added package.json configuration for npm publishing
+    - Organized code structure for better modularity
+    - All components, hooks, and utilities now use relative imports
+    - Ready for packaging as a reusable library
+
+README_STATS_LIBRARY.md
+package-stats-library.json
+src/components/stats/ComponentStatsCard.tsx
+src/components/stats/GeneralStatsComponent.tsx
+src/hooks/useRealTimePerformance.ts
+src/hooks/useThreeJsStats.ts
+src/store/performance.ts

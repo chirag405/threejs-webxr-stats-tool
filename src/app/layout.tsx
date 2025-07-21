@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Three.js WebXR Debugger',
-  description: 'Advanced performance monitoring and debugging tool for Three.js WebXR applications',
-  keywords: ['threejs', 'webxr', 'performance', 'debugging', 'stats'],
-  manifest: '/manifest.json',
-  themeColor: '#0ea5e9',
+  title: 'Three.js WebXR Performance Monitor',
+  description: 'Real-time performance monitoring tool for WebXR applications with AndroidXR support',
+  keywords: ['threejs', 'webxr', 'performance', 'debugging', 'stats', 'androidxr', 'vr', 'ar'],
+  manifest: '/manifest.webxr.json',
+  themeColor: '#00d4ff',
   viewport: {
     width: 'device-width',
     initialScale: 1,
@@ -23,10 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="theme-color" content="#0ea5e9" />
+        <meta name="theme-color" content="#00d4ff" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="mobile-web-app-capable" content="yes" />
+        <link rel="manifest" href="/manifest.webxr.json" />
+        <meta name="xr-spatial-tracking" content="enabled" />
       </head>
       <body className="bg-ui-darker text-white overflow-hidden">
         {children}
