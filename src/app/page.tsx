@@ -1166,7 +1166,7 @@ function XRSpatialScene() {
           if (screen.isEnlarged) {
             return (
               <SpatialScreen
-                key={`${screen.id}-enlarged`}
+                key={`${screen.id}-enlarged-${isPresenting ? "xr" : "desktop"}`}
                 position={[0, 0, isPresenting ? -0.5 : 1]} // Different depth for XR
                 scale={isPresenting ? [1.2, 1.2, 1] : [2, 2, 1]}
                 title={screen.title}
@@ -1210,7 +1210,7 @@ function XRSpatialScene() {
 
           return (
             <SpatialScreen
-              key={`${screen.id}-${isPresenting ? "xr" : "desktop"}`}
+              key={`${screen.id}-${isPresenting ? "xr" : "desktop"}-${index}`}
               position={xrAdjustedPosition}
               scale={xrAdjustedScale}
               title={screen.title}
@@ -1403,12 +1403,19 @@ export default function HomePage() {
           onSessionStart={() => {
             setIsXRActiveLocal(true);
             setXRActive(true);
-            console.log("XR Session Started - Enhanced UI Active");
+            console.log("🎯 XR Session Started - Enhanced UI Active");
+            console.log("📱 Device Info:", {
+              userAgent: navigator.userAgent,
+              platform: navigator.platform,
+              vendor: navigator.vendor,
+            });
+            console.log("🔧 XR State: ENTERED IMMERSIVE VR MODE");
           }}
           onSessionEnd={() => {
             setIsXRActiveLocal(false);
             setXRActive(false);
-            console.log("XR Session Ended");
+            console.log("🚪 XR Session Ended - Exited VR Mode");
+            console.log("🔧 XR State: EXITED IMMERSIVE VR MODE");
           }}
         >
           <Suspense fallback={null}>
