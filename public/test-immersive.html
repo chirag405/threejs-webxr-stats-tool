@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Immersive VR Test</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        background: #000;
+        color: #fff;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .status {
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+      }
+      .success {
+        background: #0a0;
+      }
+      .error {
+        background: #a00;
+      }
+      .info {
+        background: #00a;
+      }
+      button {
+        background: #00d4ff;
+        color: #000;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 10px;
+      }
+      button:hover {
+        background: #00b8e6;
+      }
+      button:disabled {
+        background: #666;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Immersive VR Test for AndroidXR</h1>
+
+      <div id="status"></div>
+
+      <button id="testVR" onclick="testImmersiveVR()">Test Immersive VR</button>
+      <button id="enterVR" onclick="enterImmersiveVR()" disabled>
+        Enter Immersive VR
+      </button>
+      <button id="exitVR" onclick="exitVR()" disabled>Exit VR</button>
+
+      <div id="logs"></div>
+    </div>
+
+    <script>
+      let currentSession = null;
+      const statusDiv = document.getElementById("status");
+      const logsDiv = document.getElementById("logs");
+      const testVRBtn = document.getElementById("testVR");
+      const enterVRBtn = document.getElementById("enterVR");
+      const exitVRBtn = document.getElementById("exitVR");
+
+      function log(message) {
+        console.log(message);
+        const logEntry = document.createElement("div");
+        logEntry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+        logsDiv.appendChild(logEntry);
+      }
+
+      function updateStatus(message, type = "info") {
+        statusDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
+      }
+
+      async function testImmersiveVR() {
+        log("Testing immersive VR support...");
+
+        if (!navigator.xr) {
+          updateStatus("WebXR not available in this browser", "error");
+          log("WebXR not available");
+          return;
+        }
+
+        try {
+          const isSupported = await navigator.xr.isSessionSupported(
+            "immersive-vr"
+          );
+          if (isSupported) {
+            updateStatus("Immersive VR is supported!", "success");
+            log("Immersive VR is supported");
+            enterVRBtn.disabled = false;
+          } else {
+            updateStatus("Immersive VR is not supported", "error");
+            log("Immersive VR is not supported");
+          }
+        } catch (error) {
+          updateStatus(`Error checking VR support: ${error.message}`, "error");
+          log(`Error: ${error.message}`);
+        }
+      }
+
+      async function enterImmersiveVR() {
+        log("Attempting to enter immersive VR...");
+
+        try {
+          const session = await navigator.xr.requestSession("immersive-vr", {
+            optionalFeatures: ["local-floor", "bounded-floor", "hand-tracking"],
+            requiredFeatures: ["local-floor"],
+          });
+
+          currentSession = session;
+          log("Immersive VR session started successfully");
+          updateStatus("Immersive VR session active", "success");
+
+          enterVRBtn.disabled = true;
+          exitVRBtn.disabled = false;
+
+          // Set up session event handlers
+          session.addEventListener("end", () => {
+            log("VR session ended");
+            currentSession = null;
+            enterVRBtn.disabled = false;
+            exitVRBtn.disabled = true;
+            updateStatus("VR session ended", "info");
+          });
+
+          // Start the session
+          session.addEventListener("select", () => {
+            log("VR session select event");
+          });
+
+          log("Immersive VR session is now active - you should be in VR mode");
+        } catch (error) {
+          log(`Failed to start immersive VR session: ${error.message}`);
+          updateStatus(`Failed to start VR: ${error.message}`, "error");
+        }
+      }
+
+      function exitVR() {
+        if (currentSession) {
+          currentSession.end();
+          log("Exiting VR session");
+        }
+      }
+
+      // Auto-test on page load
+      window.addEventListener("load", () => {
+        log("Page loaded, testing VR support...");
+        testImmersiveVR();
+      });
+    </script>
+  </body>
+</html>

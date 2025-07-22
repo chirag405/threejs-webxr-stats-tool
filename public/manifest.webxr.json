@@ -10,7 +10,7 @@
   "xr": {
     "required_features": ["local-floor"],
     "optional_features": ["bounded-floor", "hand-tracking", "layers"],
-    "session_modes": ["immersive-vr", "immersive-ar"]
+    "session_modes": ["immersive-vr"]
   },
   "icons": [
     {
